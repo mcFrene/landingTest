@@ -1,0 +1,17 @@
+{
+    "plugins": ["stylelint-scss"],
+    "stylelint.validate": ["css", "scss"],
+    "extends": ["stylelint-config-recess-order","stylelint-config-standard-scss"],
+    "rules": {
+        "import-notation": "string",
+        "at-rule-no-unknown": null,
+        "scss/at-rule-no-unknown": true,
+        "indentation": 4,
+        "number-leading-zero": null,
+        "scss/at-import-partial-extension": "always",
+        "alpha-value-notation": "number",
+        "rule-empty-line-before": "always",
+        "scss/operator-no-unspaced": null,
+        "scss/no-global-function-names": null
+    }
+}

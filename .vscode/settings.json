@@ -1,0 +1,41 @@
+{
+    "cSpell.words": [
+        "atomorum",
+        "atqui",
+        "btns",
+        "conceptam",
+        "congue",
+        "diceret",
+        "efficiendi",
+        "enim",
+        "gubergren",
+        "idque",
+        "illum",
+        "insolens",
+        "intellegat",
+        "laoreet",
+        "laudem",
+        "luptatum",
+        "neglegentur",
+        "Nisl",
+        "nominati",
+        "nonumes",
+        "nulla",
+        "omittam",
+        "similique",
+        "solet",
+        "tacimates",
+        "vituperata",
+        "voluptatum"
+    ],
+
+    "scss.validate": false,
+    "css.validate": false,
+    "less.validate": false,
+
+    "editor.codeActionsOnSave": {
+        "source.fixAll.stylelint": true
+    },
+    "stylelint.useLocal": true,
+    "stylelint.autoFixOnSave": true,
+}
