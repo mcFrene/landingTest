@@ -321,6 +321,10 @@ div.swiper-button{
 .dots{
     display: flex;
     justify-content: center;
+
+    @media(max-width: $breakpoint-md-max){
+        display: none;
+    }
 }
 
 .btn-group{
@@ -1120,13 +1124,17 @@ div.swiper-button{
             font-weight: $fw-medium;
         }  
 
-        @media(max-width: $breakpoint-sm-max){
+        @media(max-width: $breakpoint-lg-max){
             flex-direction: column;
         } 
     }
 
     &__left, &__right{
-        min-width: 45%;
+        width: 45%;
+        
+        @media(max-width: $breakpoint-lg-max){
+            width: 100%;
+        }
     }
 
     &__left{
@@ -1135,7 +1143,7 @@ div.swiper-button{
             line-height: 2;
         }
 
-        @media(max-width: $breakpoint-xs-max){
+        @media(max-width: $breakpoint-lg-max){
             margin-bottom: $base * 10;
         } 
     }
@@ -1148,6 +1156,15 @@ div.swiper-button{
 
         .dots{
             width: 50%;
+
+            @media(max-width: $breakpoint-lg-max){
+                width: 100%;
+            }
+        }
+
+        @media(max-width: $breakpoint-lg-max){
+            width: 100%;
+            margin-left: 0;
         }
     }
 }
@@ -1164,7 +1181,7 @@ div.swiper-button{
         padding: $base*10 $base*17 $base*15;
         background-color: $color-white;
         border: 1px solid $color-gray-50;
-        box-shadow: 0 $base $base*12 $color-gray-200;
+        box-shadow: 0 $base $base*12 $color-gray-200;   
         opacity: .5;
         
         &-text{
@@ -1186,6 +1203,10 @@ div.swiper-button{
             background-color: $color-white;
             border-radius: 100%;
             transform: translate(-50%, calc(-1*$height/2));
+        }
+
+        @media(max-width: $breakpoint-lg-max){
+            width: 100%;
         }
     }
 
