@@ -96,6 +96,7 @@ $color-blue-900: #3d4f9f;
 body{
     @include roboto;
 
+    padding-top: $base*20;
     color: $color-gray-500;
 }
 
@@ -283,28 +284,43 @@ h2{
     text-align: center;
 }
 
-.dots{
-    @include list-null;
-
+.swiper-pagination-bullet{
     display: flex;
+    align-items: center;
     justify-content: center;
+    width: $base * 6;
+    height: $base * 6;
+    cursor: pointer;
+    background: none;
 
-    &__item{
+    &::before{
         width: $base * 2;
         height: $base * 2;
-        cursor: pointer;
-        background-color: $color-gray-200;
+        content: '';
+        background-color: $color-gray-900;
         border-radius: 100%;
         transition: $transition;
+    }
 
-        &--active{
-            background-color: $color-blue-700; 
-        }
+    &-active::before{
+        background-color: $color-blue-700; 
+    }
+}
 
-        & + &{
-            margin-left: $base * 3;
+div.swiper-button{
+
+    &-next,
+    &-prev{
+        
+        &::after{
+            content: none;
         }
     }
+}
+
+.dots{
+    display: flex;
+    justify-content: center;
 }
 
 .btn-group{
@@ -353,7 +369,7 @@ h2{
                 top: 100%;
                 right: 0;
                 left: 0;
-                z-index: 10;
+                z-index: 15;
                 display: none;
                 padding: $base * 5;
                 margin-left: 0;
@@ -480,7 +496,37 @@ h2{
 // === HEADER ===
 
 .section-header{
-    position: relative;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-color: $color-white;
+
+    &::before{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        content: '';
+        background-color: rgb(0 0 0 / .5);
+    }
+
+    &--active-nav{
+        
+        &::before{
+            display: block;
+        }
+        
+        .main-navigation__inner-wrap{
+            display: flex;
+        }
+
+        
+    }
+
 }
 
 .btn-burger{
@@ -514,8 +560,7 @@ h2{
     .dots{
         position: absolute;
         bottom: $base * 7;
-        left: 50%;
-        transform: translateX(-50%);
+        z-index: 10;
     }
 }
 
@@ -525,9 +570,9 @@ h2{
     &__item{
         height: $base * 140;
         text-align: center;
-        background-position: 50% 80%;
+        background-position: 50% 75%;
         background-size: cover;
-
+        
         &-content{
 
             .section-subtitle{
@@ -850,19 +895,21 @@ h2{
         font-size: $fs-l;
         font-weight: $fw-medium;
     }
+
+    
 }
 
 .slider-blog{
     @include list-null;
 
-    background-color: $color-white;
-    border: 1px solid $color-gray-50;
-    box-shadow: 0 $base*3 $base*12 $color-gray-200;
 
     &__item{
+        box-sizing: border-box;
         display: flex;
         justify-content: space-between;
         padding: $base*16 $base*8;
+        background-color: $color-white;
+        
 
         &-gallery,
         &-content{
@@ -1013,9 +1060,17 @@ h2{
     
 }
 
+.slider-container{
+    position: relative;
+}
+
 .slider-wrapper{
     position: relative;
+    z-index: 5;
     margin-bottom: $base * 25;
+    overflow: hidden;
+    border: 1px solid $color-gray-50;
+    box-shadow: 0 $base*3 $base*12 $color-gray-200;
 
     @media(max-width: $breakpoint-md-max){
         margin-bottom: $base * 15;
@@ -1024,7 +1079,8 @@ h2{
 
 .btn-blog{
     position: absolute;
-    top: 50%;
+
+    // top: 50%;
     display: block;
     width: $base * 10;
     height: $base * 10;
@@ -1032,14 +1088,14 @@ h2{
 
     &--prev{
         right: 100%;
+        left: auto;
         margin-right: $base * 16;
-        transform: translateY(-50%);
     }
 
     &--next{
         left: 100%;
         margin-left: $base * 16;
-        transform: translateY(-50%) rotate(180deg);
+        transform: rotate(180deg);
     }
 
     @media(max-width: $breakpoint-lg-max){
@@ -1083,6 +1139,11 @@ h2{
             margin-bottom: $base * 10;
         } 
     }
+
+    &__right{
+        width: 100%;
+        overflow: hidden;
+    }
 }
 
 .slider-quotes{
@@ -1092,11 +1153,12 @@ h2{
 
     &__item{
         position: relative;
+        box-sizing: border-box;
         padding: $base*10 $base*17 $base*15;
         background-color: $color-white;
         border: 1px solid $color-gray-50;
         box-shadow: 0 $base $base*12 $color-gray-200;
-
+        
         &-text{
             font-size: $fs-s;
             line-height: 2;

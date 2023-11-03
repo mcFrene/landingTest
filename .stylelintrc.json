@@ -12,6 +12,7 @@
         "alpha-value-notation": "number",
         "rule-empty-line-before": "always",
         "scss/operator-no-unspaced": null,
-        "scss/no-global-function-names": null
+        "scss/no-global-function-names": null,
+        "selector-class-pattern": "..+"
     }
 }
